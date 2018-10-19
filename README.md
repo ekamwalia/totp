@@ -1,2 +1,5 @@
 # time-based-otp
-Generate Time-based OTPs in accordance with IETF RFC6238
+This package provides a convenient way of generarting time-based OTPs in accordance with IETF RFC6238. 
+
+
+
