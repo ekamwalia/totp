@@ -5,12 +5,12 @@ import (
   "time"
 )
 
-const (
-  time_step = 30
+var (
+  time_step = 30.0
   time0  = "1970-01-01T00:00:00Z"
 )
 
-func SetTimeStep(step int) {
+func SetTimeStep(step float64) {
   time_step = step
 }
 
