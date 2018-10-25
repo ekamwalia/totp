@@ -3,11 +3,16 @@ package totp
 import "encoding/hex"
 
 var (
-	SeedK    = "3132333435363738393031323334353637383930"
-	SeedK256 = "3132333435363738393031323334353637383930" + "313233343536373839303132"
-	SeedK512 = "3132333435363738393031323334353637383930" + "3132333435363738393031323334353637383930" + "3132333435363738393031323334353637383930" + "31323334"
-
 	DIGIT_POWERS = []int64{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000}
+)
+
+const (
+	DefaultT0         = "1970-01-01T00:00:00Z"
+	DefaultX          = 30
+	CryptoSHA1        = "HMACSHA1"
+	CryptoSHA256      = "HMACSHA256"
+	CryptoSHA512      = "HMACSHA512"
+	DefaultCodeDigits = 8
 )
 
 type TOTPConfig struct {
@@ -28,6 +33,33 @@ type TOTPConfig struct {
 	// HMAC algorithm
 	// enum{'HMACSHA1', 'HMACSHA256', 'HMACSHA512'}
 	Crypto string
+}
+
+func NewDefaultSHA1(seed string) *TOTPConfig {
+	totp := newDefault(seed)
+	totp.Crypto = CryptoSHA1
+	return totp
+}
+
+func NewDefaultSHA256(seed string) *TOTPConfig {
+	totp := newDefault(seed)
+	totp.Crypto = CryptoSHA256
+	return totp
+}
+
+func NewDefaultSHA512(seed string) *TOTPConfig {
+	totp := newDefault(seed)
+	totp.Crypto = CryptoSHA512
+	return totp
+}
+
+func newDefault(seed string) *TOTPConfig {
+	return &TOTPConfig{
+		T0:         DefaultT0,
+		X:          DefaultX,
+		SecretK:    seed,
+		CodeDigits: DefaultCodeDigits,
+	}
 }
 
 func (otpConf *TOTPConfig) GenerateTOTP(date string) (string, error) {

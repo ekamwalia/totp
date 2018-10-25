@@ -1,10 +1,10 @@
 package totp
 
 import (
-  "time"
-  "fmt"
-  "math"
-  "errors"
+	"errors"
+	"fmt"
+	"math"
+	"time"
 )
 
 /**
