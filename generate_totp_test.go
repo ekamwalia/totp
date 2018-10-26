@@ -1,7 +1,7 @@
 package totp_test
 
 import (
-	"github.com/kelsier27/time-based-otp/totp"
+	"github.com/kelsier27/totp"
 	"testing"
 )
 

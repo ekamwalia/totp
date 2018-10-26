@@ -9,6 +9,10 @@ import (
 	"strconv"
 )
 
+var (
+	DIGIT_POWERS = []int64{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000}
+)
+
 func getHmacHash(msg, key []byte, crypto string) []byte {
 
 	var mac hash.Hash

@@ -1,7 +1,7 @@
 package totp
 
 import (
-"testing"
+	"testing"
 )
 
 /**
@@ -39,4 +39,3 @@ func TestCalculateTimeSteps(t *testing.T) {
 		}
 	}
 }
-
